@@ -29,6 +29,11 @@ public class User {
     private String email;
 
     @NotBlank
+    @Size(max = 60)
+    private String companyname;
+
+
+    @NotBlank
     @Size(max = 120)
     private String password;
 
@@ -39,10 +44,12 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String companyname, String password ){
         this.username = username;
         this.email = email;
+        this.companyname = companyname;
         this.password = password;
+
     }
 
     public Long getId() {
@@ -69,6 +76,14 @@ public class User {
         this.email = email;
     }
 
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -85,3 +100,6 @@ public class User {
         this.roles = roles;
     }
 }
+
+
+

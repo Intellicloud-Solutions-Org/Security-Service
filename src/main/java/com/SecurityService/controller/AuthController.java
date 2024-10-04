@@ -67,7 +67,7 @@ public class AuthController {
                 .collect(Collectors.toList());
 
         return ResponseEntity
-                .ok(new JWTResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
+                .ok(new JWTResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), userDetails.getCompanyname(), roles));
     }
 
     @PostMapping("/register")
@@ -81,7 +81,7 @@ public class AuthController {
         }
 
         // Create new user's account
-        User user = new User(registerRequest.getUsername(), registerRequest.getEmail(),
+        User user = new User(registerRequest.getUsername(), registerRequest.getEmail(), registerRequest.getCompanyname(),
                 encoder.encode(registerRequest.getPassword()));
 
         Set<String> strRoles = registerRequest.getRole();

@@ -43,6 +43,7 @@ public class AuthControllerIntegrationTest {
         RegisterRequest registerRequest = new RegisterRequest();
         registerRequest.setUsername("testuser");
         registerRequest.setEmail("testuser@example.com");
+        registerRequest.setCompanyname("Abc Group");
         registerRequest.setPassword("password123");
         registerRequest.setRole(Set.of("USER"));
 
@@ -71,7 +72,7 @@ public class AuthControllerIntegrationTest {
     @WithMockUser(username = "testuser")
     void testProtectedRoute_WithValidJwt() throws Exception {
 
-        UserDetailsImpl userDetails = new UserDetailsImpl(1L, "testuser", "testuser@example.com", "password123", List.of(new SimpleGrantedAuthority("USER")));
+        UserDetailsImpl userDetails = new UserDetailsImpl(1L, "testuser", "testuser@example.com", "password123", "Abc Group", List.of(new SimpleGrantedAuthority("USER")));
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 
         String token = jwtUtils.generateJwtToken(authentication);

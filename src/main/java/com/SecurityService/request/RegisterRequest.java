@@ -15,11 +15,16 @@ public class RegisterRequest {
     @Email
     private String email;
 
-    private Set<String> role;
+    @NotBlank
+    @Size(min = 3, max = 20)
+    private String companyname;
 
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    private Set<String> role;
+
 
     public String getUsername() {
         return username;
@@ -35,6 +40,14 @@ public class RegisterRequest {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
     }
 
     public String getPassword() {
