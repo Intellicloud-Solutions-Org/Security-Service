@@ -52,7 +52,7 @@ public class AuthController {
 
     @Autowired
     JwtUtils jwtUtils;
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -69,7 +69,7 @@ public class AuthController {
         return ResponseEntity
                 .ok(new JWTResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), userDetails.getCompanyname(), roles));
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
         if (userRepository.existsByUsername(registerRequest.getUsername())) {

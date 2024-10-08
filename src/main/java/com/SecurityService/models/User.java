@@ -77,7 +77,7 @@ public class User {
     }
 
     public String getCompanyname() {
-        return companyname;
+        return companyname ;
     }
 
     public void setCompanyname(String companyname) {
